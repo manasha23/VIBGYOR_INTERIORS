@@ -17,13 +17,33 @@ function App() {
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/Admin/designs" exact element={<AllDesign />} />
-        <Route path="/Admin/designs/Create" exact element={<CreateDesign />} />
-        <Route path="/Admin/designs/edit/:designId" exact element={<EditDesign />} />
-        <Route path="/Admin/designs/ view/:designId" exact element={<ViewDesign />} />
-        <Route path="/Admin/products" exact element={<AllProduct />} />
-        <Route path="/Admin/products/Create" exact element={<CreateProduct />} />
-        <Route path="/Admin/products/edit/:productId " exact element={<EditProduct />} />
-        <Route path="/Admin/product/ view/:productId" exact element={<ViewProduct />} />
+        <Route path="/admin/designs/Create" exact element={<CreateDesign />} />
+        <Route
+          path="/admin/designs/edit/:designId"
+          exact
+          element={<EditDesign />}
+        />
+        <Route
+          path="/admin/designs/view/:designId"
+          exact
+          element={<ViewDesign />}
+        />
+        <Route path="/admin/products" exact element={<AllProduct />} />
+        <Route
+          path="/admin/products/Create"
+          exact
+          element={<CreateProduct />}
+        />
+        <Route
+          path="/admin/products/edit/:productId "
+          exact
+          element={<EditProduct />}
+        />
+        <Route
+          path="/admin/product/view/:productId"
+          exact
+          element={<ViewProduct />}
+        />
       </Routes>
     </Router>
   );

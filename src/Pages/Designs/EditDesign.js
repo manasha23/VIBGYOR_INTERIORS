@@ -7,7 +7,7 @@ function EditDesign() {
   return (
   
     <div>
-    CreateDesign
+  EDITDesign
     </div>
   
   );

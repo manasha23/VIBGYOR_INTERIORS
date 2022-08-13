@@ -7,7 +7,7 @@ function ViewDesign() {
   return (
     
     <div>
-    CreateDesign
+   VIEWDesign
     </div>
     
   );
