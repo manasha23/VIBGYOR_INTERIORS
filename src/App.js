@@ -13,19 +13,19 @@ import EditProduct from "./Pages/Products/EditProduct";
 import ViewProduct from "./Pages/Products/ViewProduct";
 function App() {
   return (
-   
+    <Router>
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/AllDesign" exact element={<AllDesign />} />
-        <Route path="/CreateDesign" exact element={<CreateDesign />} />
-        <Route path="/EditDesign" exact element={<EditDesign />} />
-        <Route path="/ ViewDesign" exact element={< ViewDesign />} />
-        <Route path="/AllProduct" exact element={<AllProduct/>} />
-        <Route path="/CreateProduct" exact element={<CreateProduct />} />
-        <Route path="/EditProduct " exact element={<EditProduct />} />
-        <Route path="/ViewProduct" exact element={<ViewProduct />} />
+        <Route path="/Admin/designs" exact element={<AllDesign />} />
+        <Route path="/Admin/designs/Create" exact element={<CreateDesign />} />
+        <Route path="/Admin/designs/edit/:designId" exact element={<EditDesign />} />
+        <Route path="/Admin/designs/ view/:designId" exact element={<ViewDesign />} />
+        <Route path="/Admin/products" exact element={<AllProduct />} />
+        <Route path="/Admin/products/Create" exact element={<CreateProduct />} />
+        <Route path="/Admin/products/edit/:productId " exact element={<EditProduct />} />
+        <Route path="/Admin/product/ view/:productId" exact element={<ViewProduct />} />
       </Routes>
-  
+    </Router>
   );
 }
 
