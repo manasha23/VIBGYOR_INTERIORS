@@ -16,8 +16,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/Admin/designs" exact element={<AllDesign />} />
-        <Route path="/admin/designs/Create" exact element={<CreateDesign />} />
+        <Route path="/admin/designs" exact element={<AllDesign />} />
+        <Route path="/admin/designs/create" exact element={<CreateDesign />} />
         <Route
           path="/admin/designs/edit/:designId"
           exact
@@ -30,12 +30,12 @@ function App() {
         />
         <Route path="/admin/products" exact element={<AllProduct />} />
         <Route
-          path="/admin/products/Create"
+          path="/admin/products/create"
           exact
           element={<CreateProduct />}
         />
         <Route
-          path="/admin/products/edit/:productId "
+          path="/admin/products/edit/:productId"
           exact
           element={<EditProduct />}
         />

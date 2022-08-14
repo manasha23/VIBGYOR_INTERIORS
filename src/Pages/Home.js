@@ -193,44 +193,41 @@ return (
             />
           </div>
         </div>
-        <div className=" mx-32 h-56 max-px-10 grid grid-cols-3 ">
-          <div className="  lg:w-72 rounded-2xl border border-white-700 border-opacity-70 text-center top-16 mx-auto md:w-10/12 p-5  relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-20 backdrop-blur-xl shadow-2xl md:-mt-20 lg:-mt-24 xl:-mt-32 transition duration-700 group-hover:scale-95">
-            <h2 className="  lg:w-7/12 m-auto text-center font-bold text-2xl md:text-4xl text-white  mt-5 mb-5">
-              {" "}
-              Interiors
-            </h2>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
-          </div>{" "}
-          <div className="  lg:w-72 rounded-2xl border border-white-700 border-opacity-70 text-center top-16 mx-auto md:w-10/12 p-5  relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-20 backdrop-blur-xl shadow-2xl md:-mt-20 lg:-mt-24 xl:-mt-32 transition duration-700 group-hover:scale-95">
-            <h2 className="lg:w-7/12 m-auto text-center font-bold text-2xl md:text-4xl text-white  mt-5 mb-5">
-              {" "}
-              Service
-            </h2>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
-          </div>{" "}
-          <div className="  lg:w-72 rounded-2xl border border-white-700 border-opacity-70 text-center top-16 mx-auto md:w-10/12 p-5  relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-20 backdrop-blur-xl shadow-2xl md:-mt-20 lg:-mt-24 xl:-mt-32 transition duration-700 group-hover:scale-95">
-            <h2 className="  lg:w-7/12 m-auto text-center font-bold text-2xl md:text-4xl text-white  mt-5 mb-5">
-              {" "}
-              Decors
-            </h2>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
-          </div>
-        </div>
+        <div className="relative py-16 bg-white">  
+  <div className="relative container m-auto px-6 text-gray-500 md:px-12">
+    <div className="grid lg:grid-cols-3 gap-6 md:w-8/12 md:mx-auto lg:w-full">
+      <div className="group bg-white rounded-xl shadow-xl px-8 py-12 space-y-6 text-center">
+        <img className="mx-auto w-24" src="images/icons/code.png" alt="illustration" loading="lazy" />
+        <h3 className="text-2xl font-semibold text-gray-800">Web development</h3>
+        <p>Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
+        <a href="#" className="relative flex justify-center items-center h-10 w-10 mx-auto 
+                                 before:absolute before:inset-0 before:border before:rounded-full before:transition before:duration-300 group-hover:before:scale-125">
+          <span className="text-gray-700">→</span>
+        </a>
+      </div>
+      <div className="group bg-white rounded-xl shadow-xl px-8 top-10 py-12 space-y-6 text-center">
+        <img className="mx-auto w-24" src="images/icons/magic.png" alt="illustration" loading="lazy" />
+        <h3 className="text-2xl font-semibold text-gray-800">Seo </h3>
+        <p>Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
+        <a href="#" className="relative flex justify-center items-center h-10 w-10 mx-auto 
+                                 before:absolute before:inset-0 before:border before:rounded-full before:transition before:duration-300 group-hover:before:scale-125">
+          <span className="text-gray-700">→</span>
+        </a>
+      </div>
+      <div className="group bg-white rounded-xl shadow-xl px-8 py-12 space-y-6 text-center">
+        <img className="mx-auto w-24" src="images/icons/graphic.webp" alt="illustration" loading="lazy" />
+        <h3 className="text-2xl font-semibold text-gray-800">Web Design</h3>
+        <p>Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
+        <a href="#" className="relative flex justify-center items-center h-10 w-10 mx-auto 
+                                 before:absolute before:inset-0 before:border before:rounded-full before:transition before:duration-300 group-hover:before:scale-125">
+          <span className="text-gray-700">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
       </section>
     </div>
   );
