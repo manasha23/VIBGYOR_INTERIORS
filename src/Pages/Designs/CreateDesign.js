@@ -2,7 +2,7 @@ function CreateDesign() {
   return (
     <div className="container  items-center mt-10 pb-32 px-16">
       
-      <div className=" w-96 ml-96 mt-10  rounded-2xl  border border-white-700 border-opacity-70   p-5  relative md:rounded-2xl border border-gray-400 border-opacity-70  bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-orange-400 to-sky-400 to-slate-900  backdrop-blur-xl shadow-2xl m  transition duration-700 group-hover:scale-95">
+      <div className=" w-96 ml-96 mt-10  rounded-2xl  border border-white-700 border-opacity-70   p-5  relative md:rounded-2xl border border-gray-400 border-opacity-70  bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900  backdrop-blur-xl shadow-2xl m  transition duration-700 group-hover:scale-95">
         <div className="text-3xl text-center">Add Designs</div>{" "}
         <form action="" className="p-8  mb-0 space-y-4 rounded-lg shadow-2xl">
           <div>
