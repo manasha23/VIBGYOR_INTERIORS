@@ -18,12 +18,12 @@ function Home() {
                           Home
                         </a>
                       </a>
-                      <a href="#About">
+                      <a href="/Interiors">
                         <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                           Interiors
                         </a>
                       </a>
-                      <a href="/Events">
+                      <a href="/Decors ">
                         <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                           Decors
                         </a>
@@ -149,8 +149,8 @@ function Home() {
             </div>
           </main>
         </div>
-        <div className="container flex flex-col justify-center px-20 -my-28 -mb-5 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-          <div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+        <div className=" container flex flex-col justify-center px-20 -my-28 -mb-5 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+          <div className=" flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
             <h1 className="text-5xl lg:text-5xl font-bold leading-none sm:text-6xl">
               VIBGYOR
               <span className="dark:text-violet-400">
@@ -162,23 +162,55 @@ function Home() {
               Bring your home to life with one-on-one design help &amp; hand
               picked products tailored to your style, space and budget.
             </p>
-            <div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+            <div className="  hover:border-black flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
               <a
                 rel="noopener noreferrer"
-                href="#"
-                className="px-8 w-36 py-3 text-align text-lg font-semibold rounded dark:bg-violet-400 dark:text-gray-900"
+                href="/Sign-up"
+                className="px-8 w-36 py-3 text-align text-lg font-semibold rounded  hover:text-white dark:bg-violet-400 dark:text-gray-900 "
+                type="button"
+                data-modal-toggle="authentication-modal "
               >
                 Sign-Up
               </a>
               <a
                 rel="noopener noreferrer"
-                href="#"
-                className="px-8 py-3 text-lg font-semibold border rounded dark:border-gray-100"
+                href="/Decors"
+                className="px-8 py-3 text-lg font-semibold border rounded hover:dark:text-violet-400  dark:border-gray-100"
               >
                 Shop Now!
               </a>
             </div>
-          </div><div className="video-wrapper" data-v-467de426><a href="javascript:;" className="btn-close" style={{display: 'none'}} data-v-467de426><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABICAMAAAB8+nPGAAAAz1BMVEUAAAAAAAD29vY8PDzp6enx8fHh4eEqKiogICBISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSUlIXFxcMDAwAAAAAAADHx8exsbFkZGQAAAAAAAD6+vru7u7l5eXa2trV1dXT09OkpKSfn59aWlo3Nzc0NDQbGxv///9IgXqMAAAARHRSTlOvAPq89fjyuLa/qwMKB2Kmn4NQIBKViCipjn49NhahcWwbDJF4VUxJRUIxLSUOw7SymVrn38ebXvz38u7t7NvZxLu6tFzqudEAAAJjSURBVFjDpdhXetswEEXhC8l2bLB3FVK9F1tySe/h/tcUWYzkiAA5LGcB/wfiBZwBy03RVHU0UjVNYbllM2qo+z2cMy19pZZltjMfYtxaqCWYYMKREe87BZm1hdw6QQHGnYCs71KM3UKBjHkus+2gYBM1mwlMFG7vZDFhCyUy1nJmyVEqHsqYLsrGVyKz4ihdK0gzTgsV6kWXjOahUm3tgumjYvr/TIjKrd8Y7T0qN1bOzAfUyD4xLkeNDPUfo6NW04QZGahVTzsyNsSazz8eIHT7/fkXxJZHpg2hP404vrlFqndXcfxpByHrlXEgdh/HiZNSDjUh5h6YR4g9XCeOqFztIDY7MD4k3TUSJ61cNyGpw6BxEA6pwFCwAgiHVAAHM1AOraCLASiHVjCFBdIhFfThgXI+kwo6MEE6pAIfBiiHVjAGR24vCXOP3DziNK+3m9wzcRqTVmjHh0cqjQbpWPAp5bp5Rzp9DEgFIJ1H2LRCO0uEtEI7AUakQjtcA2tTCu1YDNLHbndzUtLOF/mDBxbIX4ZEEZ0mxIYHhu0l3/QxUUSnIXkF2+zASF+Yl69PvyHUfPr2E2KzIxNx1Kq1PTJsgFrpLGGGqBN3E6bmcXR2YrYGKmeqZ4bNUbkue2MUCxWbXPxeuyYqtVcvGLbmqBDfpCeYRbWLSTNsitLNWYqp9K9uy2dNG2Xii6zJt9tC4Ywwew53PBSsPczbCmgDFErXiB1FMAaZv6E3JsqcGNK8pcIIJoEWXs6ldJXi26SN3oMkU3dK7raUjd25oMyO7SjkbktujdwoGg6jyFUTgWDq9heGQlZj+sZFqAAAAABJRU5ErkJggg==" alt="close.png" data-v-467de426 /></a><img src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/img/placeholder.085e9c6.jpg" alt="placeholder.jpg" className="video-placeholder" style={{display: 'none'}} data-v-467de426 /><video loop="loop" autoPlay="autoplay" muted="muted" src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/videos/banner.586d4df.mp4" className="video relative" style={{}} data-v-467de426 /></div>
+          </div>
+          <div className=" video-wrapper " data-v-467de426>
+            <a
+              href="javascript:;"
+              className="btn-close"
+              style={{ display: "none" }}
+              data-v-467de426
+            >
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAABICAMAAAB8+nPGAAAAz1BMVEUAAAAAAAD29vY8PDzp6enx8fHh4eEqKiogICBISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSUlIXFxcMDAwAAAAAAADHx8exsbFkZGQAAAAAAAD6+vru7u7l5eXa2trV1dXT09OkpKSfn59aWlo3Nzc0NDQbGxv///9IgXqMAAAARHRSTlOvAPq89fjyuLa/qwMKB2Kmn4NQIBKViCipjn49NhahcWwbDJF4VUxJRUIxLSUOw7SymVrn38ebXvz38u7t7NvZxLu6tFzqudEAAAJjSURBVFjDpdhXetswEEXhC8l2bLB3FVK9F1tySe/h/tcUWYzkiAA5LGcB/wfiBZwBy03RVHU0UjVNYbllM2qo+z2cMy19pZZltjMfYtxaqCWYYMKREe87BZm1hdw6QQHGnYCs71KM3UKBjHkus+2gYBM1mwlMFG7vZDFhCyUy1nJmyVEqHsqYLsrGVyKz4ihdK0gzTgsV6kWXjOahUm3tgumjYvr/TIjKrd8Y7T0qN1bOzAfUyD4xLkeNDPUfo6NW04QZGahVTzsyNsSazz8eIHT7/fkXxJZHpg2hP404vrlFqndXcfxpByHrlXEgdh/HiZNSDjUh5h6YR4g9XCeOqFztIDY7MD4k3TUSJ61cNyGpw6BxEA6pwFCwAgiHVAAHM1AOraCLASiHVjCFBdIhFfThgXI+kwo6MEE6pAIfBiiHVjAGR24vCXOP3DziNK+3m9wzcRqTVmjHh0cqjQbpWPAp5bp5Rzp9DEgFIJ1H2LRCO0uEtEI7AUakQjtcA2tTCu1YDNLHbndzUtLOF/mDBxbIX4ZEEZ0mxIYHhu0l3/QxUUSnIXkF2+zASF+Yl69PvyHUfPr2E2KzIxNx1Kq1PTJsgFrpLGGGqBN3E6bmcXR2YrYGKmeqZ4bNUbkue2MUCxWbXPxeuyYqtVcvGLbmqBDfpCeYRbWLSTNsitLNWYqp9K9uy2dNG2Xii6zJt9tC4Ywwew53PBSsPczbCmgDFErXiB1FMAaZv6E3JsqcGNK8pcIIJoEWXs6ldJXi26SN3oMkU3dK7raUjd25oMyO7SjkbktujdwoGg6jyFUTgWDq9heGQlZj+sZFqAAAAABJRU5ErkJggg=="
+                alt="close.png"
+                data-v-467de426
+              />
+            </a>
+            <img
+              src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/img/placeholder.085e9c6.jpg"
+              alt="placeholder.jpg"
+              className="video-placeholder"
+              style={{ display: "none" }}
+              data-v-467de426
+            />
+            <video
+              loop="loop"
+              autoPlay="autoplay"
+              muted="muted"
+              src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/videos/banner.586d4df.mp4"
+              className="  video relative"
+              style={{}}
+              data-v-467de426
+            />
+          </div>
           <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
             <img
               src="assets/svg/Business_SVG.svg"
@@ -187,52 +219,61 @@ function Home() {
             />
           </div>
         </div>
-
-        <div className=" mx-32 h-56 max-px-10 grid grid-cols-3 ">
-          <div className="  lg:w-72 rounded-2xl border border-white-700 border-opacity-70 text-center top-16 mx-auto md:w-10/12 p-5  relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-20 backdrop-blur-xl shadow-2xl md:-mt-20 lg:-mt-24 xl:-mt-32 transition duration-700 group-hover:scale-95">
-            <h2 className="  lg:w-7/12 m-auto text-center font-bold text-2xl md:text-4xl text-white  mt-5 mb-5">
-              {" "}
-              Interiors
-            </h2>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
-          </div>{" "}
-          <div className="  lg:w-72 rounded-2xl border border-white-700 border-opacity-70 text-center top-16 mx-auto md:w-10/12 p-5  relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-20 backdrop-blur-xl shadow-2xl md:-mt-20 lg:-mt-24 xl:-mt-32 transition duration-700 group-hover:scale-95">
-            <h2 className="lg:w-7/12 m-auto text-center font-bold text-2xl md:text-4xl text-white  mt-5 mb-5">
-              {" "}
-              Service
-            </h2>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
-          </div>{" "}
-          <div className="  lg:w-72 rounded-2xl border border-white-700 border-opacity-70 text-center top-16 mx-auto md:w-10/12 p-5  relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-20 backdrop-blur-xl shadow-2xl md:-mt-20 lg:-mt-24 xl:-mt-32 transition duration-700 group-hover:scale-95">
-            <h2 className="  lg:w-7/12 m-auto text-center font-bold text-2xl md:text-4xl text-white  mt-5 mb-5">
-              {" "}
-              Decors
-            </h2>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged.
+        <div className="cursor-pointer -mt-28 max-px-10 grid grid-cols-3 ml-10 p-12 ">
+          <div className="card w-80  glass ">
+            <figure>
+              <img className="h-60 w-80" src="https://static.dezeen.com/uploads/2021/11/the-bureau-coworking-office-interiors-paris-franklin-azzi-socialite-family_dezeen_1704_col_hero.jpg" alt="car!" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Interior Designs</h2>
+              <p>
+                {" "}
+                Find beautiful home interior designs. Complete home interiors solution: dedicated designers, personalized home interior designs.
+              </p>
+              <div  className="card-actions justify-start">
+                <a href="/Interiors" className="btn  dark:bg-gray-800 hover:dark:bg-black text-white hover:dark:text-violet-400">Explore Now!</a>
+              </div>
+            </div>
           </div>
-          <h1 className="text-5xl w-96 text-center ml-80 mt-40 lg:text-5xl font-bold leading-none sm:text-6xl">
-            How it
-            <span className="dark:text-violet-400"> Works?</span>
-          </h1>
+          <div className="card w-80  glass">
+            <figure>
+              <img className="h-60 w-80" src="https://antonovich-design.ae/uploads/page/2022/5/antonovich-design-thumb2022YoTqE9TctrWW.jpeg" alt="car!" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Service</h2>
+              <p>
+                {" "}
+                The best online interior design services to decorate your house.Get the interiors of your home designed by our experts at Vibgyor Interiors.
+              </p>
+              <div className="card-actions justify-start">
+                <a href="#service" className="btn  dark:bg-gray-800 hover:dark:bg-black hover:dark:text-violet-400 text-white ">Know More</a>
+              </div>
+            </div>
+          </div>
+          <div className="card w-80 glass">
+            <figure>
+              <img className="h-60 w-80" src="https://imgmedia.lbb.in/media/2019/02/5c6ec1279d684b2e0de71737_1550762279676.jpg" alt="car!" />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">Home Decors</h2>
+              <p>
+                {" "}
+                Decorate your table-tops with unique and beautifully designed home decor. Buy handcrafted table decor online on the Vibgyor Interiors.
+              </p>
+              <div className=" card-actions  justify-start">
+                <a href="/Decors" className="btn  dark:bg-gray-800 hover:dark:bg-black hover:dark:text-violet-400 text-white ">Shop now!</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <section className="text-gray-600 body-font">
-          <div className="container bg-yellow-300 px-5 py-24 mx-auto flex flex-wrap">
-            <div className="flex relative pt-10 pb-20 mt-56 sm:items-center md:w-2/3 mx-auto">
+        <section id="service" className="text-gray-600 body-font">
+          <div className="container bg-yellow-300 px-5 -mt-40 py-24 mx-auto flex flex-wrap">
+            {" "}
+            <h1 className="text-5xl w-96 text-center ml-80 mt-20 lg:text-5xl font-bold leading-none sm:text-6xl">
+              How it
+              <span className="dark:text-violet-400"> Works?</span>
+            </h1>
+            <div className="flex relative pt-10 pb-20  sm:items-center md:w-2/3 mx-auto">
               <div className="h-full w-6 absolute inset-0 flex items-center justify-center">
                 <div className="h-full w-1 bg-gray-200 pointer-events-none" />
               </div>
@@ -291,7 +332,10 @@ function Home() {
                     Measurement & Estimation
                   </h2>
                   <p className="leading-relaxed">
-                  Taking measurements is a key element of the job, as are making decisions and calculations based on the results. Because accuracy is crucial, professional interior designers and decorators measure everything in inches.
+                    Taking measurements is a key element of the job, as are
+                    making decisions and calculations based on the results.
+                    Because accuracy is crucial, professional interior designers
+                    and decorators measure everything in inches.
                   </p>
                 </div>
               </div>
@@ -355,27 +399,26 @@ function Home() {
                 </div>
                 <div className="flex-grow sm:pl-6 mt-6 sm:mt-0">
                   <h2 className="font-medium title-font text-gray-900 mb-1 text-xl">
-                  Check on the Finishing
+                    Check on the Finishing
                   </h2>
                   <p className="leading-relaxed">
-                  Finally, it comes down to the finishing of the design. You must keep an eye on the finishing of the work done. Check on the polish of the woodwork, the finish of the paint and the furniture, the strength of the cabinet handles and the corner finishing of each room.
+                    Finally, it comes down to the finishing of the design. You
+                    must keep an eye on the finishing of the work done. Check on
+                    the polish of the woodwork, the finish of the paint and the
+                    furniture, the strength of the cabinet handles and the
+                    corner finishing of each room.
                   </p>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <section className="text-gray-600 body-font">
-          <div className="container px-5 py-24 mx-auto flex flex-wrap">
-            <div className="flex w-full mb-20 flex-wrap">
-              <h1 className="sm:text-3xl text-2xl font-medium title-font text-white lg:w-1/3 lg:mb-0 mb-4">
+        <section className="text-gray-600   body-font">
+          <div className="container px-5  py-24 mx-auto flex flex-wrap">
+            <div className="flex w-full mb-20   -mt-10 flex-wrap">
+              <h1 className="sm:text-3xl ml-96  text-center text-4xl font-medium title-font text-white lg:w-1/3 lg:mb-0 mb-2">
                 Intelligent design for every lifestyle
               </h1>
-              <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
-                Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-                gentrify, subway tile poke farm-to-table. Franzen you probably
-                haven't heard of them man bun deep jianbing selfies heirloom.
-              </p>
             </div>
             <div className="flex flex-wrap md:-m-2 -m-1">
               <div className="flex flex-wrap w-1/2">
@@ -427,44 +470,7 @@ function Home() {
             </div>
           </div>
         </section>
-        <section className=" md:m-8 dark:bg-gray-800 dark:text-gray-100">
-          <div className="container p-4 mx-auto my-6 space-y-1 text-center">
-            
-            <h2 className="pb-3 -mt-10 text-3xl font-bold md:text-4xl">
-              Alan Platform provides an AI backend for your application to
-              create conversational experiences
-            </h2><span className="text-xs font-semibold tracking-wider uppercase dark:text-purple-400">
-              The complete Voice AI Platform
-            </span>
-          </div>
-          <div className=" ml-40 text-center container grid justify-center gap-4 mx-auto lg:grid-cols-2 xl:grid-cols-4">
-            <div className="flex flex-col px-8 py-6">
-              <h2 className="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">
-                Recognizes user context
-              </h2>
-              <p className="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">
-                Learns your App’s UI to support any conversation or workflow
-              </p>
-            </div>
-            <div className="flex flex-col px-8 py-6 lg:border-none xl:border-solid">
-              <h2 className="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">
-                Works with any Domain
-              </h2>
-              <p className="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">
-                Trains on your App’s unique vocabulary automatically.
-              </p>
-            </div>
-            <div className="flex w-96 flex-col px-8 py-6">
-              <h2 className="mb-2 text-lg font-semibold sm:text-xl title-font dark:text-gray-100">
-                Easily innovate and iterate
-              </h2>
-              <p className="flex-1 mb-4 text-base leading-relaxed dark:text-gray-400">
-                Alan Studio has a set of tools for defining and analyzing
-                conversational flows to quickly improve
-              </p>
-            </div>
-          </div>
-        </section>{" "}
+    
         <div className="m-10 space-y-4 ">
           {" "}
           <h1 className="ml-80 mb-10 text-5xl lg:text-5xl font-bold leading-none sm:text-6xl">
@@ -473,52 +479,48 @@ function Home() {
           </h1>
           <details className=" mx-auto rounded-2xl border  p-5 relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-40 backdrop-blur-xl shadow-2xl ">
             <summary className="px-4 py-6 dark:text-white focus:outline-none focus-visible:ring-violet-400">
-              When to pay the registration fee?
+              What happens after booking a design?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-white">
-              At the registration desk on the day of the event.
+              Our well experienced designers will visit your location where they
+              will measure and estimate your room and will share the design
+              concept and quote. Then, we will initiate the project.
             </p>
           </details>
           <details className="mx-auto rounded-2xl border p-2 relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-40 backdrop-blur-xl shadow-2xl ">
             <summary className="px-4 py-6 dark:text-white focus:outline-none focus-visible:ring-violet-400">
-              What is the contention regulation for overall champions?
+              Can I make changes in the given designs?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 dark:text-white -mt-4">
-              A team has to participate in all of the events to be in contention
-              for overall championship.
+              Yes, After booking the design, customers are allowed to make their
+              changes as per their convienence and satisfaction.
             </p>
           </details>
           <details className="mx-auto rounded-2xl border p-3 relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-40 backdrop-blur-xl shadow-2xl ">
             <summary className="px-4 py-6 dark:text-white focus:outline-none focus-visible:ring-violet-400">
-              Can a participant join multiple events?
+              Can I order and book a design at a same time?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 dark:text-white -mt-4">
-              No, A participant can only join 1 individual event.
+              Yes, Customer are allowed to do both at a same time.
             </p>
           </details>
           <details className="mx-auto rounded-2xl dark:text-white border p-5 relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-40 backdrop-blur-xl shadow-2xl ">
             <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-              What time does the event begin?
+              What are the details needed to be given to book a visit?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 dark:text-white -mt-4 ">
-              The participants have to assemble before 9 A.M.
+              Customers need to give their name, phone number, address and email
+              address.
             </p>
           </details>
-          <details className="mx-auto rounded-2xl border p-2 dark:text-white relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-40 backdrop-blur-xl shadow-2xl ">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-              Do the participants get their own equipment?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 marker:dark:text-white  ">
-              It depends on the event, check event rules or contact the event
-              coordinator.
-            </p>
-          </details>{" "}
           <details className="mx-auto rounded-2xl dark:text-white border p-5 relative md:rounded-2xl border border-gray-700 border-opacity-70 bg-gray-900 bg-opacity-40 backdrop-blur-xl shadow-2xl ">
             <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-              Who can participate in this event?
+              Can I return or cancel items previously purchased through Vibgyor?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-white ">
-              Only BCA and BSc computer science students.
+              In some instances we will be able to return or cancel items for
+              direct retailer store credit, but some of our direct vendor items
+              will not be able to be returned or canceled.
             </p>
           </details>
         </div>
@@ -544,18 +546,7 @@ function Home() {
                 </div>
                 <center>
                   <span className="self-center text-2xl font-semibold">
-                    SYGMA2022{" "}
-                    <p className="text-base font-sans mt-1 -mb-10">
-                      {" "}
-                      sdmcbm@sdmcbm.ac.in
-                    </p>
-                    <br />
-                    <a
-                      className="  text-base underline"
-                      href="https://goo.gl/maps/PoU6vFtGEXSu8LED6"
-                    >
-                      Google Maps
-                    </a>
+                    VIBGYOR Interiors
                   </span>
                 </center>
               </a>
@@ -578,12 +569,12 @@ function Home() {
                   </li>
                   <li>
                     <a rel="noopener noreferrer" href="#Events">
-                      Events
+                      Interiors
                     </a>
                   </li>
                   <li>
                     <a rel="noopener noreferrer" href="/Sponsor">
-                      Sponsor
+                      Decors
                     </a>
                   </li>
                   <li>
@@ -593,43 +584,7 @@ function Home() {
                   </li>
                 </ul>
               </div>
-              {/* <div className="space-y-3">
-          <h3 className="tracking-wide uppercase dark:text-gray-50">
-            Sponsors
-          </h3>
-          <ul className="space-y-1">
-            <li>
-              <a rel="noopener noreferrer" href="#">
-                Mango
-              </a>
-            </li>
-            <li>
-              <a rel="noopener noreferrer" href="#">
-                Poteto
-              </a>
-            </li>
-          </ul>
-        </div> */}
-              {/* <div className="space-y-3">
-          <h3 className="uppercase dark:text-gray-50">Developers</h3>
-          <ul className="space-y-1">
-            <li>
-              <a rel="noopener noreferrer" href="#">
-                Public API
-              </a>
-            </li>
-            <li>
-              <a rel="noopener noreferrer" href="#">
-                Documentation
-              </a>
-            </li>
-            <li>
-              <a rel="noopener noreferrer" href="#">
-                Guides
-              </a>
-            </li>
-          </ul>
-        </div> */}
+          
               <div className="space-y-3">
                 <div className="uppercase dark:text-gray-50">Social media</div>
                 <div className="flex justify-start space-x-3">
@@ -665,20 +620,6 @@ function Home() {
                   </a>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="py-6 text-sm text-center dark:text-gray-400">
-            Shri Dharmasthala Manjunatheshwara College of Business Management -
-            MG Rd, Kodailbail, Mangaluru, Karnataka 575003.- Phone: +91 824 249
-            4186
-            <div id="branding" className="text-center  text-base mt-3">
-              Designed by{" "}
-              <a
-                href="https://www.instagram.com/srishti_suratkal/ "
-                className="dark:text-yellow-400 "
-              >
-                Srishti Suratkal
-              </a>
             </div>
           </div>
         </footer>
