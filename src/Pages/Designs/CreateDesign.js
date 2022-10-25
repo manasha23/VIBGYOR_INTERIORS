@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase-config";
 import { collection, getDocs, addDoc } from "firebase/firestore";
+import { UserAuth } from "../../Context/AuthContext";
 import { storage } from "../../firebase-config";
 import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 const CreateDesigns = () => {
+  let navigate = useNavigate();
   const [newName, setNewName] = useState("");
   const [newDescription, setDescription] = useState("");
   const [newPrice, setPrice] = useState(0);
   const [category, setCategory] = useState("");
   const [id, setId] = useState("");
   const [imageUpload, setImageUpload] = useState("");
-
-  const userCollectionRef = collection(db, "Designs");
-  const submitFormFunction = (e) => {
+const userCollectionRef = collection(db, "Designs");
+ 
+const submitFormFunction = (e) => {
     e.preventDefault();
   };
 
   const CreateDesign = async () => {
-   
-
+    alert("Product added successfully ");
+    navigate("/admin/designs", { replace: true });
     await addDoc(userCollectionRef, {
       Name: newName,
       Id: id,
@@ -32,10 +35,19 @@ const CreateDesigns = () => {
     });
     toast.success("Success Notification !");
   };
-
+  const { user, logout } = UserAuth();
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/Adminsignup");
+      console.log("You are logged out");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
   return (
     <div className="container   grid grid-cols-2  h-screen dark:bg-gray-800 ">
-         <div className="text-white flex flex-col items-center w-56 h-full overflow-hidden bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900  ">
+      <div className="text-white flex flex-col items-center w-56 h-full overflow-hidden bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900  ">
         <a className="flex items-center w-full px-3 mt-3" href="#">
           <svg
             className="w-8 h-8 fill-current"
@@ -53,7 +65,7 @@ const CreateDesigns = () => {
               className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
               href="/admin/designs/create"
             >
-              <span  className="ml-2 text-sm font-medium">Create-Designs</span>
+              <span className="ml-2 text-sm font-medium">Create-Designs</span>
             </a>
             <a
               className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
@@ -61,12 +73,7 @@ const CreateDesigns = () => {
             >
               <span className="ml-2 text-sm font-medium">Design-Stocks</span>
             </a>
-            <a
-              className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-              href="/admin/designs/edit/:designId"
-            >
-              <span className="ml-2 text-sm font-medium">Modify-Designs</span>
-            </a>
+
             <a
               className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
               href="/admin/designs/view/:designId"
@@ -89,13 +96,7 @@ const CreateDesigns = () => {
             >
               <span className="ml-2 text-sm font-medium">Product-Stocks</span>
             </a>
-            <a
-              className="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-              href="/admin/products/edit/:productId"
-            >
-              <span className="ml-2 text-sm font-medium">Modify-Products</span>
-              <span className="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full" />
-            </a>{" "}
+
             <a
               className="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
               href="/admin/product/view/:productId"
@@ -103,8 +104,13 @@ const CreateDesigns = () => {
               <span className="ml-2 text-sm font-medium">
                 View-Product Orders
               </span>
-              <span className="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full" />
+              <span className="absolute top-0 left-0 w-2 h-2 mt-5 ml-2  rounded-full" />
             </a>
+            <div className="max-w-[600px] mx-auto ml-5 mt-5">
+              <button onClick={handleLogout} className="border hover:border-black px-6 py-2 my-4">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -114,102 +120,109 @@ const CreateDesigns = () => {
           onSubmit={submitFormFunction}
           action=""
           className="p-8  mb-0 space-y-4 rounded-lg shadow-2xl"
-        >        <div className="grid grid-cols-2 space-x-4">
-          <div>
-            <label for="email" class="text-sm font-medium">
-              Design Name
-            </label>
+        >
+          {" "}
+          <div className="grid grid-cols-2 space-x-4">
+            <div>
+              <label for="email" class="text-sm font-medium">
+                Design Name
+              </label>
 
-            <div className="relative mt-1">
-              <input
-                class="w-full p-4 pr-12 text-sm text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter Design Name"
-                onChange={(event) => {
-                  setNewName(event.target.value);
-                }}
-              />
-            </div>
+              <div className="relative mt-1">
+                <input
+                  class="w-full p-4 pr-12 text-sm text-black border-gray-200 rounded-lg shadow-sm"
+                  placeholder="Enter Design Name"
+                  onChange={(event) => {
+                    setNewName(event.target.value);
+                  }}
+                />
+              </div>
+            </div>{" "}
+            <div>
+              <label for="password" class="text-sm font-medium">
+                ID
+              </label>
+
+              <div class="relative mt-1">
+                <input
+                  type="number"
+                  className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
+                  placeholder="Enter Design ID"
+                  onChange={(event) => {
+                    setId(event.target.value);
+                  }}
+                />
+              </div>
+            </div>{" "}
           </div>{" "}
-          <div>
-            <label for="password" class="text-sm font-medium">
-              ID
-            </label>
+          <div className="grid grid-cols-2 space-x-4">
+            <div>
+              <label for="password" class="text-sm font-medium">
+                Description
+              </label>
 
-            <div class="relative mt-1">
-              <input
-                type="number"
-                className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter Design ID"
-                onChange={(event) => {
-                  setId(event.target.value);
-                }}
-              />
-            </div>
-          </div>{" "}</div>        <div className="grid grid-cols-2 space-x-4">
-          <div>
-            <label for="password" class="text-sm font-medium">
-              Description
-            </label>
+              <div class="relative mt-1">
+                <input
+                  className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
+                  placeholder="Enter Design Description"
+                  onChange={(event) => {
+                    setDescription(event.target.value);
+                  }}
+                />
+              </div>
+            </div>{" "}
+            <div>
+              <label for="password" className="text-sm font-medium">
+                Category
+              </label>
 
-            <div class="relative mt-1">
-              <input
-                className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter Design Description"
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}
-              />
-            </div>
+              <div class="relative mt-1">
+                <select
+                  value={category}
+                  onChange={(event) => setCategory(event.target.value)}
+                  className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
+                  placeholder="Enter the Category"
+                >
+                  <option value="Livingroom">Livingroom</option>
+                  <option value="Bathroom">Bathroom</option>
+                  <option value="Bedroom">Bedroom</option>
+                  <option value="Kitchen">Kitchen</option>
+                </select>
+              </div>
+            </div>{" "}
           </div>{" "}
-          <div>
-            <label for="password" className="text-sm font-medium">
-              Category
-            </label>
+          <div className="grid grid-cols-2 space-x-4">
+            <div>
+              <label for="number" className="text-sm font-medium">
+                Pricing
+              </label>
 
-            <div class="relative mt-1">
-              <select
-                value={category}
-                onChange={(event) => setCategory(event.target.value)}
-                className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter the Category"
-              >
-                <option value="Livingroom">Livingroom</option>
-                <option value="Bathroom">Bathroom</option>
-                <option value="Bedroom">Bedroom</option>
-                <option value="Kitchen">Kitchen</option>
-              </select>
-            </div>
-          </div>{" "}</div>        <div className="grid grid-cols-2 space-x-4">
-          <div>
-            <label for="number" className="text-sm font-medium">
-              Pricing
-            </label>
-
-            <div class="relative mt-1">
+              <div class="relative mt-1">
+                <input
+                  className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
+                  placeholder="Enter Price"
+                  type="number"
+                  onChange={(event) => {
+                    setPrice(event.target.value);
+                  }}
+                />
+              </div>
+            </div>{" "}
+            <div className="w-60 mt-1 space-y-0.5">
+              <label htmlFor="photo" className="text-xs font-medium text-sm ">
+                {" "}
+                Design Image{" "}
+              </label>
               <input
-                className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter Price"
-                type="number"
+                placeholder="Add Image URL"
+                type="url"
                 onChange={(event) => {
-                  setPrice(event.target.value);
+                  setImageUpload(event.target.value);
                 }}
+                className="block w-full h-12  text-black cursor-pointer appearance-none rounded-md border border-gray-200 bg-white px-3 py-2 text-sm transition focus:border-black focus:outline-none focus:ring-1 focus:ring-black disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
               />
             </div>
-          </div>{" "}
-          <div className="w-60 mt-1 space-y-0.5">
-            <label htmlFor="photo" className="text-xs font-medium text-sm ">
-              {" "}
-              Design Image {" "}
-            </label>
-            <input
-              placeholder="Add Image URL"
-              type="url"
-              onChange={(event) => {
-                setImageUpload(event.target.value);
-              }}
-              className="block w-full h-12  text-black cursor-pointer appearance-none rounded-md border border-gray-200 bg-white px-3 py-2 text-sm transition focus:border-black focus:outline-none focus:ring-1 focus:ring-black disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
-            />
-          </div></div>
+          </div>
           <button
             onClick={CreateDesign}
             class="flex items-center ml-40 justify-between w-48 h-14 px-5 py-3 text-white transition-colors border border-current rounded-lg hover:bg-black group active:bg-black focus:outline-none focus:ring"
@@ -239,6 +252,7 @@ const CreateDesigns = () => {
           </button>{" "}
         </form>
       </div>{" "}
+      <div className="max-w-[600px] absolute mx-auto ml-72  -mt-1 my-16 p-4"></div>
     </div>
   );
 };

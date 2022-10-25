@@ -44,13 +44,16 @@ const Livingroom = () => {
                 </div>
               </div>
             </div>
-            <div className="xl:w-6/12 h-48 lg:h-auto  overflow-hidden">
-              <img
-                src="https://i.postimg.cc/0yLQn5wb/image-processing20200429-32563-nl0ekg-2-removebg-preview.png"
-                loading="lazy"
-                alt="Photo by Fakurian Design"
-                className="w-full h-full object-cover object-center"
-              />
+            <div className="xl:w-6/12 h-56 lg:h-auto  overflow-hidden">
+            <video
+              loop="loop"
+              autoPlay="autoplay"
+              muted="muted"
+              src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/videos/01.50c3d02.mp4"
+              className="  video relative"
+              style={{}}
+              data-v-467de426
+            />
             </div>
           </div>
         </div>{" "}
@@ -58,14 +61,12 @@ const Livingroom = () => {
           {design.map((design) => {
     
             return (
-              <div className="py-6  ">
+              <div className="py-6 -mt-20 mb-20 ">
                 <div className="max-w-screen-2xl m-5 ">
-                  <div className="flex justify-between items-end gap-4 mb-6"></div>
-
                   <div>
                     <a
                       href="#"
-                      class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative"
+                      class="group h-46 block bg-gray-100 rounded-t-lg overflow-hidden relative"
                     >
                       <img
                         src={design.Image}
@@ -86,21 +87,21 @@ const Livingroom = () => {
                           {/* name */}
                           {design.Name}
                         </span>
-                        <div class="text-sky-900 font-bold text-lg ">
+                       
+                        <span class="text-gray-600 text-sm lg:text-base">
+                          {/* Description  */}
+                          {design.Description}
+                        </span> <div class="text-sky-900 font-bold text-lg ">
                           {" "}
                           {/* price */}
                           Rs.{design.Price}
                         </div>
-                        <span class="text-gray-600 text-sm lg:text-base">
-                          {/* Description  */}
-                          {design.Description}
-                        </span>
                       </div>
 
                       <div class="flex flex-col items-end">
-                        <button href="/Booking" class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
+                        <a href="/Booking" class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
                           BOOK
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>

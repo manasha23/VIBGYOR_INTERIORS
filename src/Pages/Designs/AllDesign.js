@@ -28,7 +28,7 @@ const AllDesign = () => {
 
   return (
     <div className="container mt-10 pb-32 px-16">
-      <h2 className="text-3xl font-medium   text-cyan-800 uppercase mb-16">
+      <h2 className="text-3xl font-medium   text-white uppercase mb-16">
         <center> Interior Designs</center>
       </h2>
       <div className="grid grid-cols-4 gap-8 ">
@@ -38,7 +38,7 @@ const AllDesign = () => {
             className="w-full h-full rounded-2xl"
           />
           <a
-            href="#"
+            href="/Bedroom"
             className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition"
           >
             BEDROOM
@@ -50,7 +50,7 @@ const AllDesign = () => {
             className="w-full h-full rounded-2xl"
           />
           <a
-            href="#"
+            href="/Livingroom"
             className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition"
           >
             LIVING ROOM
@@ -62,7 +62,7 @@ const AllDesign = () => {
             className="w-full h-full rounded-2xl"
           />
           <a
-            href="#"
+            href="/Kitchen"
             className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition"
           >
             KITCHEN
@@ -74,7 +74,7 @@ const AllDesign = () => {
             className="w-full h-full rounded-2xl"
           />
           <a
-            href="#"
+            href="/Bedroom"
             className="absolute inset-0 bg-black bg-opacity-30 rounded-2xl flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition"
           >
             BATHROOM
@@ -174,16 +174,7 @@ const AllDesign = () => {
                   </div>
                   <div className="w-full sm:w-auto flex justify-between border-t mt-7 mr-5 sm:border-none p-4 sm:pl-0 lg:p-6 lg:pl-0">
                     <div className="flex flex-col items-start gap-2">
-                      <a
-                        class="relative inline-block px-8 py-3 w-28 overflow-hidden border  rounded-sm border-black group focus:outline-none focus:ring"
-                        href="/admin/designs/edit/:designId"
-                      >
-                        <span class="absolute inset-y-0 left-0 w-[2px]  transition-all bg-purple-900 group-hover:w-full group-active:bg-black"></span>
-
-                        <span class="relative text-sm font-medium  text-white transition-colors group-hover:text-white">
-                          Modify
-                        </span>
-                      </a>
+                  
                       <button
                         onClick={() => {
                           deleteUser(design.id);
@@ -191,10 +182,10 @@ const AllDesign = () => {
                             "Design deleted successfully.Please refresh the page "
                           );
                         }}
-                        class="relative inline-block px-8 py-3 w-28 overflow-hidden border rounded-sm border-purple-900 group focus:outline-none focus:ring"
+                        class="relative inline-block px-8 py-3 w-28 overflow-hidden border rounded-sm border-red-900 group focus:outline-none focus:ring"
                         href="/download"
                       >
-                        <span class="absolute inset-y-0 left-0 w-[2px] transition-all bg-purple-900 group-hover:w-full group-active:bg-purple-900"></span>
+                        <span class="absolute inset-y-0 left-0 w-[2px] transition-all bg-purple-900 group-hover:w-full group-active:bg-red-900"></span>
 
                         <span class="relative text-sm font-medium text-white transition-colors group-hover:text-white">
                           Delete

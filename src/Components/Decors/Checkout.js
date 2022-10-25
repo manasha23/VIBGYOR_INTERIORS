@@ -1,16 +1,48 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import { db } from "../../firebase-config";
+import { collection, getDocs, addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 function Checkout() {
+  let navigate = useNavigate();
+  const [newName, setNewName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [notes, setNotes] = useState([]);
+
+  const userCollectionRef = collection(db, "Orders-UserDeatils");
+  const submitFormFunction = (e) => {
+    e.preventDefault();
+  };
+
+  const Details = async () => {
+    alert("Product added successfully ");
+    navigate("/Payment", { replace: true });
+    await addDoc(userCollectionRef, {
+      Name: newName,
+      LastName: lastName,
+      Email: email,
+      Address:address,
+      City: city,
+      Postcode: postcode,
+      Notes: notes,
+    });
+  };
+
   return (
     <section>
       <div className="dark:bg-gray-800 container p-12 mx-auto">
         <div className="flex flex-col w-full px-0 mx-auto md:flex-row">
           <div className="flex flex-col md:w-full">
-          <h1 className="text-5xl mb-10 dark:text-violet-400 lg:text-5xl font-bold leading-none sm:text-6xl">
+            <h1 className="text-5xl mb-10 dark:text-violet-400 lg:text-5xl font-bold leading-none sm:text-6xl">
               Shipping Cart
-             
             </h1>
             <form
+            onSubmit={submitFormFunction}
               className="justify-center w-full mx-auto"
               method="post"
               action
@@ -25,6 +57,9 @@ function Checkout() {
                       First Name
                     </label>
                     <input
+                     onChange={(event) => {
+                      setNewName(event.target.value);
+                    }}
                       name="firstName"
                       type="text"
                       placeholder="First Name"
@@ -39,6 +74,9 @@ function Checkout() {
                       Last Name
                     </label>
                     <input
+                     onChange={(event) => {
+                      setLastName(event.target.value);
+                    }}
                       name="Last Name"
                       type="text"
                       placeholder="Last Name"
@@ -55,6 +93,9 @@ function Checkout() {
                       Email
                     </label>
                     <input
+                     onChange={(event) => {
+                      setEmail(event.target.value);
+                    }}
                       name="Last Name"
                       type="text"
                       placeholder="Email"
@@ -70,7 +111,10 @@ function Checkout() {
                     >
                       Address
                     </label>
-                    <textarea
+                    <textarea 
+                     onChange={(event) => {
+                      setAddress(event.target.value);
+                    }}
                       className="w-full px-4 py-3 text-xs border border-white rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                       name="Address"
                       cols={20}
@@ -88,7 +132,10 @@ function Checkout() {
                     >
                       City
                     </label>
-                    <input
+                    <input 
+                     onChange={(event) => {
+                      setCity(event.target.value);
+                    }}
                       name="city"
                       type="text"
                       placeholder="City"
@@ -103,6 +150,9 @@ function Checkout() {
                       Postcode
                     </label>
                     <input
+                     onChange={(event) => {
+                      setPostcode(event.target.value);
+                    }}
                       name="postcode"
                       type="text"
                       placeholder="Post Code"
@@ -122,7 +172,7 @@ function Checkout() {
                   </label>
                 </div>
                 <div className="relative pt-3 xl:pt-6">
-                  <label
+                  <label 
                     htmlFor="note"
                     className="block mb-3 text-sm font-semibold text-white"
                   >
@@ -130,6 +180,9 @@ function Checkout() {
                     Notes (Optional)
                   </label>
                   <textarea
+                   onChange={(event) => {
+                    setNotes(event.target.value);
+                  }}
                     name="note"
                     className="flex items-center w-full px-4 py-3 text-sm border border-white rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                     rows={4}
@@ -137,49 +190,14 @@ function Checkout() {
                     defaultValue={""}
                   />
                 </div>
-                <div>
-                  <fieldset className="mt-4">
-                    <legend className="sr-only">Payment type</legend>
-                    <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
-                      <div className="flex items-center">
-                        <input
-                          id="credit-card"
-                          name="payment-type"
-                          type="radio"
-                          defaultChecked
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-white"
-                        />
-                        <label
-                          htmlFor="credit-card"
-                          className="ml-3 block text-sm font-medium text-white"
-                        >
-                          Billdesk
-                        </label>
-                      </div>
-                      <div className="flex items-center">
-                        <input
-                          id="paypal"
-                          name="payment-type"
-                          type="radio"
-                          className="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-white"
-                        />
-                        <label
-                          htmlFor="paypal"
-                          className="ml-3 block text-sm font-medium text-white"
-                        >
-                          Razorpay
-                        </label>
-                      </div>
-                    </div>
-                  </fieldset>
-                </div>
+         
                 <div className="mt-4 w-1/5 ">
-                  <a 
+                  <button   onClick={Details}
                     href="/Payment"
                     className="w-full px-6 py-2 text-white rounded border-black hover:bg-black border hover:border-black hover:text-white dark:bg-violet-900"
                   >
                     Procced
-                  </a>
+                  </button>
                 </div>
               </div>
             </form>

@@ -1,206 +1,113 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { db } from "../../firebase-config";
+import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
+function Furniture({setCart}) {
+  const [products, setproducts] = useState([]);
+  const userCollectionRef = collection(db, "Products");
+  useEffect(() => {
+    const getProducts = async () => {
+      const q = query(userCollectionRef, where("Category", "==", "Furniture"));
+      const data = await getDocs(q);
+      setproducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    };
+    getProducts();
+  }, []);
 
-   function Furniture() {
-   return (
+console.log(products)
+  return (
     <section>
-      
-<div className='bg-sky-900'>
-<div className=" pt-16 pb-32 px-16">
-      <div className="flex flex-col lg:flex-row justify-between gap-2">
-            
+      <div className="bg-sky-900">
+        <div className=" pt-16 pb-32 px-16">
+          <div className="flex flex-col lg:flex-row justify-between gap-2">
             <div className="xl:w-5/12 flex flex-col justify-between">
               <div />
               <div className="sm:text-center lg:text-left lg:py-12 xl:py-24">
-                <p className="text-white text-5xl font-semibold mb-4 md:mb-6">Shop Furniture</p>
-                <div className="text-gray-400 text-xl  font-bold mb-8 md:mb-12">At Vibgyor, we’ve got a wide range of affordable and stylish furniture that you’ll love. Our carefully-curated furniture designs come in a variety of styles, colour schemes.</div>
-                
-                
+                <p className="text-white text-5xl font-semibold mb-4 md:mb-6">
+                  Shop Furniture
+                </p>
+                <div className="text-gray-400 text-xl  font-bold mb-8 md:mb-12">
+                  At Vibgyor, we’ve got a wide range of affordable and stylish
+                  furniture that you’ll love. Our carefully-curated furniture
+                  designs come in a variety of styles, colour schemes.
+                </div>
               </div>
             </div>
             <div className="xl:w-6/12 h-48 lg:h-auto  overflow-hidden">
-              <img src="https://i.postimg.cc/0yLQn5wb/image-processing20200429-32563-nl0ekg-2-removebg-preview.png" loading="lazy" alt="Photo by Fakurian Design" className="w-full h-full object-cover object-center" />
+            <video
+              loop="loop"
+              autoPlay="autoplay"
+              muted="muted"
+              src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/videos/01.50c3d02.mp4"
+              className="  video relative"
+              style={{}}
+              data-v-467de426
+            />
             </div>
-            
-          </div>
-       </div>
-       <div className="py-6 ">
-        <div className="max-w-screen-2xl px-16 ">
-          <div className="flex justify-between items-end gap-4 mb-6"> 
-          </div>
-          <div class="grid grid-cols-3 gap-16 ">
-          <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/9XSNvgbd/2022-08-09-9.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Bradon L-shape Sofa</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹65,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
           </div>
         </div>
+        <div className="grid grid-cols-3 gap-1">
+          {products.map((product) => {
+            return (
+              <div className="py-3 -mt-20 mb-20">
+                <div className="max-w-screen-2xl mx-10 ">
+                  
+                  <div >
+                    <div>
+                      <a
+                        href="#"
+                        class="group h-40 block bg-gray-100 rounded-t-lg overflow-hidden relative"
+                      >
+                        <img
+                          src={product.Image}
+                          loading="lazy"
+                          alt="Photo by Austin Wade"
+                          class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
+                        />
+                      </a>
+
+                      <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
+                        <div class="flex flex-col">
+                          <span class="text-sky-800 font-bold text-lg ">
+                            {/* name */}
+                            {product.Id}.
+                          </span>
+                          <span class="text-sky-800 font-bold text-lg ">
+                            {/* name */}
+                            {product.Name}
+                          </span>
+                        
+                          <span class="text-gray-600 text-sm lg:text-base">
+                            {/* Description  */}
+                            {product.Description}
+                          </span>  <div class="text-sky-900 font-bold text-lg ">
+                            {/* price */}
+                            Rs.{product.Price}
+                          </div>
+                        </div>
+
+                        <div class="flex flex-col items-end">
+                          <a href="/ProductBook"  class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
+                          Book
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>{" "}
       </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/1tH1Gkqh/2022-08-09-10.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Adolph bed with walnut finish</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹75,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/4xDYq9F4/2022-08-09-11.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Walken bEd with walnut finish</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹ 75,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/t4R4ZzZM/2022-08-09-27.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Jerold Computer table</div>
-            <span class="text-sky-800 text-lg lg:text-base">45,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/j54HXXcJ/2022-08-09-24.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Janet 4 seater dining table</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹55,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/KYLwm6cS/2022-08-09-13.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Ciara fabric sofa</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹65,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-        
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/JzQKKRhh/2022-08-09-25.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Cora 4 seating dining table</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹35,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/26N66N44/2022-08-09-28.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Frodo study table</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹35,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      <div>
-        <a href="#" class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative">
-          <img src="https://i.postimg.cc/xCp45ntm/2022-08-09-31.png" loading="lazy" alt="Photo by Nick Karvounis" class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200" />
-        </a>
-        <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
-          <div class="flex flex-col">
-            <div class="text-sky-800  lg:text-lg font-bold ">Parker 3 seater</div>
-            <span class="text-sky-800 text-lg lg:text-base">₹44,000</span>
-          </div>
-
-          <div class="flex flex-col items-end">
-          <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
-          SHOP
-        </button>
-          </div>
-        </div>
-      </div>
-      
-        </div>
-      </div>
-        </div>
-      </div>
-      
-
-      
     </section>
-
-    
-
   );
-};
+}
 export default Furniture;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase-config";
 import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from "../../firebase-config";
-import { v4 } from "uuid";
+import { query, where } from "firebase/firestore";
+
 import {
   collection,
   getDocs,
@@ -14,9 +14,12 @@ import {
 const Bathroom = () => {
   const [design, setDesigns] = useState([]);
   const userCollectionRef = collection(db, "Designs");
+
   useEffect(() => {
     const getDesigns = async () => {
-      const data = await getDocs(userCollectionRef);
+      const q = query(userCollectionRef, where("Category", "==", "Bathroom"));
+      const data = await getDocs(q);
+
       setDesigns(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getDesigns();
@@ -42,28 +45,32 @@ const Bathroom = () => {
               </div>
             </div>
             <div className="xl:w-6/12 h-48 lg:h-auto  overflow-hidden">
-              <img
-                src="https://i.postimg.cc/0yLQn5wb/image-processing20200429-32563-nl0ekg-2-removebg-preview.png"
-                loading="lazy"
-                alt="Photo by Fakurian Design"
-                className="w-full h-full object-cover object-center"
-              />
+            <video
+              loop="loop"
+              autoPlay="autoplay"
+              muted="muted"
+              src="https://cdn-publish-filemanager.homestyler.com/prod/_homestyler/_nuxt/dist/videos/01.50c3d02.mp4"
+              className="  video relative"
+              style={{}}
+              data-v-467de426
+            />
             </div>
           </div>
-        </div>
+        </div><div className="grid grid-cols-3  gap-10">
         {design.map((design) => {
           return (
-            <div className="py-6 ">
-              <div className="max-w-screen-2xl px-32 ">
-                <div className="flex justify-between items-end gap-4 mb-6"></div>
-                <div class="grid grid-cols-2 gap-16">
+            <div className="py-6 -mt-20 mb-20 ">
+            <div className="max-w-screen-2xl m-5 ">
+              
+              
+                <div >
                   <div>
                     <a
                       href="#"
-                      class="group h-96 block bg-gray-100 rounded-t-lg overflow-hidden relative"
+                      class="group h-46 block bg-gray-100 rounded-t-lg overflow-hidden relative"
                     >
                       <img
-                        src="https://images.livspace-cdn.com/w:1440/dpr:1/q:100/plain/https://d3gq2merok8n5r.cloudfront.net/abhinav/ond-1634120396-Obfdc/amj-1649698066-erEC6/bathroom-1650539500-7MWAn/final-bathroom-2-render-1-1656329299-1SFEa.png"
+                        src={design.Image}
                         loading="lazy"
                         alt="Photo by Austin Wade"
                         class="w-full h-full object-cover object-center group-hover:scale-110 transition duration-200"
@@ -72,28 +79,28 @@ const Bathroom = () => {
 
                     <div class="flex justify-between items-start bg-gray-100 rounded-b-lg gap-2 p-4">
                       <div class="flex flex-col">
-                      <span class="text-sky-800 font-bold text-lg ">
-                            {/* name */}
-                            {design.Id}
+                        <span class="text-sky-800 font-bold text-lg ">
+                          {/* name */}
+                          {design.Id}.
                         </span>
                         <span class="text-sky-800 font-bold text-lg ">
-                            {/* name */}
-                            {design.Name}
+                          {/* name */}
+                          {design.Name}
                         </span>
-                        <div class="text-sky-900 font-bold text-lg ">
-                         {/* price */}
-                         Rs.{design.Price}
-                        </div>
+                       
                         <span class="text-gray-600 text-sm lg:text-base">
-                        {/* Description  */}
-                        {design.Description}
-                        </span>
+                          {/* Description  */}
+                          {design.Description}
+                        </span> <div class="text-sky-900 font-bold text-lg ">
+                          {/* price */}
+                          Rs.{design.Price}
+                        </div>
                       </div>
 
                       <div class="flex flex-col items-end">
-                        <button class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
+                        <a class="bg-transparent hover:bg-sky-900 text-sky-900 font-semibold hover:text-white py-2 px-4 border border-sky-800 hover:border-transparent rounded">
                           BOOK
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -102,6 +109,7 @@ const Bathroom = () => {
             </div>
           );
         })}
+        </div>
       </div>
     </section>
   );

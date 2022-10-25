@@ -1,45 +1,73 @@
 import { useState } from "react";
 import { Transition } from "@headlessui/react";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../Context/AuthContext";
+
 function Home() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+     alert("You are logged out");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
   return (
     <div>
       <section className="dark:bg-gray-800  dark:text-gray-100">
-        <div className="border-b-2 h-20 border-white border-opacity-10 mb-10">
+        <div className="border-b-2 h-28 border-white border-opacity-10 mb-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className=" w-10 flex items-center h-16">
               <div className="flex items-center">
                 <div className="hidden md:block">
-                  <center>
-                    <div className="  ml-96 flex items-baseline space-x-12  ">
-                      <a href="#Home">
-                        <a className=" hover:bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Home
-                        </a>
+                  <a class="flex mt-60 ">
+                    <img
+                      src="https://i.postimg.cc/L5Zk296J/2-removebg-preview.png"
+                      class="mr-3 mb-64 w-52 h-52   "
+                      alt="Flowbite Logo"
+                    />
+                  </a>
+
+                  <div className=" ml-96 mb-60 -mt-96 flex items-baseline space-x-12 ">
+                    {" "}
+                    <a href="#Home">
+                      <a className=" hover:bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Home
                       </a>
-                      <a href="/Interiors">
-                        <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Interiors
-                        </a>
+                    </a>
+                    <a href="/Interiors">
+                      <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Interiors
                       </a>
-                      <a href="/Decors ">
-                        <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Decors
-                        </a>
+                    </a>
+                    <a href="/Decors ">
+                      <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Decors
                       </a>
-                      <a href="#Faq">
-                        <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                          About
-                        </a>
-                      </a>{" "}
-                      <a href="#Footer">
-                        <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                          Contact
-                        </a>
+                    </a>
+                    <a href="#faq">
+                      <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        FAQ's
                       </a>
-                    </div>
-                  </center>
+                    </a>{" "}
+                    <a href="#Footer">
+                      <a className="text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        Contact
+                      </a>
+                    </a>{" "}
+                  <p className="w-28"> {user && user.email}</p>
+                    <button
+                      onClick={handleLogout}
+                      className="border  px-6 py-2 my-4  "
+                    >
+                      Logout
+                    </button>
+                  </div>  
                 </div>
               </div>
               <div className="-mr-2 flex md:hidden">
@@ -222,46 +250,79 @@ function Home() {
         <div className="cursor-pointer -mt-28 max-px-10 grid grid-cols-3 ml-10 p-12 ">
           <div className="card w-80  glass ">
             <figure>
-              <img className="h-60 w-80" src="https://static.dezeen.com/uploads/2021/11/the-bureau-coworking-office-interiors-paris-franklin-azzi-socialite-family_dezeen_1704_col_hero.jpg" alt="car!" />
+              <img
+                className="h-60 w-80"
+                src="https://static.dezeen.com/uploads/2021/11/the-bureau-coworking-office-interiors-paris-franklin-azzi-socialite-family_dezeen_1704_col_hero.jpg"
+                alt="car!"
+              />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Interior Designs</h2>
               <p>
                 {" "}
-                Find beautiful home interior designs. Complete home interiors solution: dedicated designers, personalized home interior designs.
+                Find beautiful home interior designs. Complete home interiors
+                solution: dedicated designers, personalized home interior
+                designs.
               </p>
-              <div  className="card-actions justify-start">
-                <a href="/Interiors" className="btn  dark:bg-gray-800 hover:dark:bg-black text-white hover:dark:text-violet-400">Explore Now!</a>
+              <div className="card-actions justify-start">
+                <a
+                  href="/Interiors"
+                  className="btn  dark:bg-gray-800 hover:dark:bg-black text-white hover:dark:text-violet-400"
+                >
+                  Explore Now!
+                </a>
               </div>
             </div>
           </div>
           <div className="card w-80  glass">
             <figure>
-              <img className="h-60 w-80" src="https://antonovich-design.ae/uploads/page/2022/5/antonovich-design-thumb2022YoTqE9TctrWW.jpeg" alt="car!" />
+              <img
+                className="h-60 w-80"
+                src="https://antonovich-design.ae/uploads/page/2022/5/antonovich-design-thumb2022YoTqE9TctrWW.jpeg"
+                alt="car!"
+              />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Service</h2>
               <p>
                 {" "}
-                The best online interior design services to decorate your house.Get the interiors of your home designed by our experts at Vibgyor Interiors.
+                The best online interior design services to decorate your
+                house.Get the interiors of your home designed by our experts at
+                Vibgyor Interiors.
               </p>
               <div className="card-actions justify-start">
-                <a href="#service" className="btn  dark:bg-gray-800 hover:dark:bg-black hover:dark:text-violet-400 text-white ">Know More</a>
+                <a
+                  href="#service"
+                  className="btn  dark:bg-gray-800 hover:dark:bg-black hover:dark:text-violet-400 text-white "
+                >
+                  Know More
+                </a>
               </div>
             </div>
           </div>
           <div className="card w-80 glass">
             <figure>
-              <img className="h-60 w-80" src="https://imgmedia.lbb.in/media/2019/02/5c6ec1279d684b2e0de71737_1550762279676.jpg" alt="car!" />
+              <img
+                className="h-60 w-80"
+                src="https://imgmedia.lbb.in/media/2019/02/5c6ec1279d684b2e0de71737_1550762279676.jpg"
+                alt="car!"
+              />
             </figure>
             <div className="card-body">
               <h2 className="card-title">Home Decors</h2>
               <p>
                 {" "}
-                Decorate your table-tops with unique and beautifully designed home decor. Buy handcrafted table decor online on the Vibgyor Interiors.
+                Decorate your table-tops with unique and beautifully designed
+                home decor. Buy handcrafted table decor online on the Vibgyor
+                Interiors.
               </p>
               <div className=" card-actions  justify-start">
-                <a href="/Decors" className="btn  dark:bg-gray-800 hover:dark:bg-black hover:dark:text-violet-400 text-white ">Shop now!</a>
+                <a
+                  href="/Decors"
+                  className="btn  dark:bg-gray-800 hover:dark:bg-black hover:dark:text-violet-400 text-white "
+                >
+                  Shop now!
+                </a>
               </div>
             </div>
           </div>
@@ -470,8 +531,8 @@ function Home() {
             </div>
           </div>
         </section>
-    
-        <div className="m-10 space-y-4 ">
+
+        <div id="faq" className="m-10 space-y-4 ">
           {" "}
           <h1 className="ml-80 mb-10 text-5xl lg:text-5xl font-bold leading-none sm:text-6xl">
             Know More About
@@ -524,104 +585,47 @@ function Home() {
             </p>
           </details>
         </div>
-        <footer
-          className="px-4 divide-y bg-[#020314] dark:text-gray-100
-    "
-          id="Footer"
-          href="#Footer"
-        >
-          <div className="container flex flex-col justify-between py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
-            <div className="lg:w-1/3">
-              <a
-                rel="noopener noreferrer"
-                href="#"
-                className="flex justify-center space-x-3 lg:justify-start"
-              >
-                <div className="flex items-center  mt-10 justify-center rounded-full">
-                  <img
-                    src="https://i.postimg.cc/rsnxLFHw/Slide-4-3-15-2.png"
-                    className=" -mt-10 h-28 w-28"
-                    alt="Hero Section"
-                  />
-                </div>
-                <center>
-                  <span className="self-center text-2xl font-semibold">
-                    VIBGYOR Interiors
-                  </span>
-                </center>
-              </a>
-            </div>
-            <div className="grid px-10 grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
-              <div className="space-y-3">
-                <h3 className="tracking-wide uppercase dark:text-gray-50">
-                  Navigation
-                </h3>
-                <ul className="space-y-1">
-                  <li>
-                    <a rel="noopener noreferrer" href="#Home">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a rel="noopener noreferrer" href="#">
-                      About
-                    </a>
-                  </li>
-                  <li>
-                    <a rel="noopener noreferrer" href="#Events">
-                      Interiors
-                    </a>
-                  </li>
-                  <li>
-                    <a rel="noopener noreferrer" href="/Sponsor">
-                      Decors
-                    </a>
-                  </li>
-                  <li>
-                    <a rel="noopener noreferrer" href="#Faq">
-                      FAQ`s
-                    </a>
-                  </li>
-                </ul>
-              </div>
-          
-              <div className="space-y-3">
-                <div className="uppercase dark:text-gray-50">Social media</div>
-                <div className="flex justify-start space-x-3">
-                  <a
-                    rel="noopener noreferrer"
-                    href="https://instagram.com/sygma_2022?igshid=YmMyMTA2M2Y="
-                    title="Instagram"
-                    className="flex items-center pl-4 p-1"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 32 32"
-                      fill="currentColor"
-                      className="w-5 h-5 fill-current"
-                    >
-                      <path d="M16 0c-4.349 0-4.891 0.021-6.593 0.093-1.709 0.084-2.865 0.349-3.885 0.745-1.052 0.412-1.948 0.959-2.833 1.849-0.891 0.885-1.443 1.781-1.849 2.833-0.396 1.020-0.661 2.176-0.745 3.885-0.077 1.703-0.093 2.244-0.093 6.593s0.021 4.891 0.093 6.593c0.084 1.704 0.349 2.865 0.745 3.885 0.412 1.052 0.959 1.948 1.849 2.833 0.885 0.891 1.781 1.443 2.833 1.849 1.020 0.391 2.181 0.661 3.885 0.745 1.703 0.077 2.244 0.093 6.593 0.093s4.891-0.021 6.593-0.093c1.704-0.084 2.865-0.355 3.885-0.745 1.052-0.412 1.948-0.959 2.833-1.849 0.891-0.885 1.443-1.776 1.849-2.833 0.391-1.020 0.661-2.181 0.745-3.885 0.077-1.703 0.093-2.244 0.093-6.593s-0.021-4.891-0.093-6.593c-0.084-1.704-0.355-2.871-0.745-3.885-0.412-1.052-0.959-1.948-1.849-2.833-0.885-0.891-1.776-1.443-2.833-1.849-1.020-0.396-2.181-0.661-3.885-0.745-1.703-0.077-2.244-0.093-6.593-0.093zM16 2.88c4.271 0 4.781 0.021 6.469 0.093 1.557 0.073 2.405 0.333 2.968 0.553 0.751 0.291 1.276 0.635 1.844 1.197 0.557 0.557 0.901 1.088 1.192 1.839 0.22 0.563 0.48 1.411 0.553 2.968 0.072 1.688 0.093 2.199 0.093 6.469s-0.021 4.781-0.099 6.469c-0.084 1.557-0.344 2.405-0.563 2.968-0.303 0.751-0.641 1.276-1.199 1.844-0.563 0.557-1.099 0.901-1.844 1.192-0.556 0.22-1.416 0.48-2.979 0.553-1.697 0.072-2.197 0.093-6.479 0.093s-4.781-0.021-6.48-0.099c-1.557-0.084-2.416-0.344-2.979-0.563-0.76-0.303-1.281-0.641-1.839-1.199-0.563-0.563-0.921-1.099-1.197-1.844-0.224-0.556-0.48-1.416-0.563-2.979-0.057-1.677-0.084-2.197-0.084-6.459 0-4.26 0.027-4.781 0.084-6.479 0.083-1.563 0.339-2.421 0.563-2.979 0.276-0.761 0.635-1.281 1.197-1.844 0.557-0.557 1.079-0.917 1.839-1.199 0.563-0.219 1.401-0.479 2.964-0.557 1.697-0.061 2.197-0.083 6.473-0.083zM16 7.787c-4.541 0-8.213 3.677-8.213 8.213 0 4.541 3.677 8.213 8.213 8.213 4.541 0 8.213-3.677 8.213-8.213 0-4.541-3.677-8.213-8.213-8.213zM16 21.333c-2.948 0-5.333-2.385-5.333-5.333s2.385-5.333 5.333-5.333c2.948 0 5.333 2.385 5.333 5.333s-2.385 5.333-5.333 5.333zM26.464 7.459c0 1.063-0.865 1.921-1.923 1.921-1.063 0-1.921-0.859-1.921-1.921 0-1.057 0.864-1.917 1.921-1.917s1.923 0.86 1.923 1.917z"></path>
-                    </svg>
-                  </a>
-                  <a
-                    rel="noopener"
-                    href="https://youtube.com/channel/UCeNtI-GE2_zqmichdQegyyg"
-                    title="YouTube"
-                    className="flex -pt-10 w-12 h-12 rounded-full bg-gray-800 bg-opacity-0 hover:bg-opacity-60 focus:bg-opacity-40 active:bg-opacity-50 transition"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="currentColor"
-                      className="w-6"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
+        <footer className="p-4 h-72  bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
+          <div className="sm:flex mr-20 -mb-20 sm:items-center -mt-12 sm:justify-between">
+            <a className="flex items-center mb-4 sm:mb-0">
+              <img
+                src="https://i.postimg.cc/L5Zk296J/2-removebg-preview.png"
+                className="mr-3 h-52"
+                w-52
+                alt="Flowbite Logo"
+              />
+              <span className="self-center text-2xl  font-semibold whitespace-nowrap dark:text-white">
+                VIBGJYOR Interiors
+              </span>
+            </a>
+            <ul id="Footer"className="flex flex-wrap  items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
+              <li>
+                <a href="/" className="mr-4 hover:underline md:mr-6 ">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/Interiors" className="mr-4 hover:underline md:mr-6">
+                  Interiors
+                </a>
+              </li>
+              <li>
+                <a href="/Decors" className="mr-4 hover:underline md:mr-6 ">
+                  Decors
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:underline">
+                  FAQ
+                </a>
+              </li>
+            </ul>
           </div>
+          <hr className="my-6  border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            © 2022 <a className="hover:underline">VIBGYOR Interior™</a>. All
+            Rights Reserved.
+          </span>
         </footer>
       </section>
     </div>

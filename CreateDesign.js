@@ -4,7 +4,7 @@ import { collection, getDocs, addDoc } from "firebase/firestore";
 import { storage } from "../../firebase-config";
 import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { v4 } from "uuid";
-const CreateDesigns= () => {
+const CreateDesigns = () => {
   const [newName, setNewName] = useState("");
   const [newDescription, setDescription] = useState("");
   const [newPrice, setPrice] = useState(0);
@@ -23,9 +23,7 @@ const CreateDesigns= () => {
   //   });
   // };
 
-
- 
-const CreateDesign = async () => {
+  const CreateDesign = async () => {
     await addDoc(userCollectionRef, {
       Name: newName,
       Description: newDescription,
@@ -35,19 +33,23 @@ const CreateDesign = async () => {
   };
   return (
     <div className="container  items-center mt-10 pb-32 px-16">
-      
       <div className=" w-96 ml-96 mt-10  rounded-2xl  border border-white-700 border-opacity-70   p-5  relative md:rounded-2xl border border-gray-400 border-opacity-70  bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900  backdrop-blur-xl shadow-2xl m  transition duration-700 group-hover:scale-95">
         <div className="text-3xl text-center">Add Designs</div>{" "}
-        <form onSubmit={submitFormFunction} action="" className="p-8  mb-0 space-y-4 rounded-lg shadow-2xl">
+        <form
+          onSubmit={submitFormFunction}
+          action=""
+          className="p-8  mb-0 space-y-4 rounded-lg shadow-2xl"
+        >
           <div>
             <label for="email" class="text-sm font-medium">
-             Design Name
+              Design Name
             </label>
 
             <div className="relative mt-1">
               <input
                 class="w-full p-4 pr-12 text-sm text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter Design Name" onChange={(event) => {
+                placeholder="Enter Design Name"
+                onChange={(event) => {
                   setNewName(event.target.value);
                 }}
               />
@@ -61,7 +63,8 @@ const CreateDesign = async () => {
             <div class="relative mt-1">
               <input
                 className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter Design Description"onChange={(event) => {
+                placeholder="Enter Design Description"
+                onChange={(event) => {
                   setDescription(event.target.value);
                 }}
               />
@@ -75,12 +78,12 @@ const CreateDesign = async () => {
             <div class="relative mt-1">
               <input
                 className="w-full p-4 pr-12 text-sm  text-black border-gray-200 rounded-lg shadow-sm"
-                placeholder="Enter  Price"     onChange={(event) => {
+                placeholder="Enter  Price"
+                onChange={(event) => {
                   setPrice(event.target.value);
                 }}
               />
             </div>
-          
           </div>{" "}
           <div className="w-full space-y-0.5">
             <label htmlFor="photo" className="text-xs font-medium text-sm ">
@@ -93,7 +96,8 @@ const CreateDesign = async () => {
               className="block w-full text-black cursor-pointer appearance-none rounded-md border border-gray-200 bg-white px-3 py-2 text-sm transition focus:border-black focus:outline-none focus:ring-1 focus:ring-black disabled:cursor-not-allowed disabled:bg-gray-200 disabled:opacity-75"
             />
           </div>
-          <button onClick={CreateDesign}
+          <button
+            onClick={CreateDesign}
             class="flex items-center ml-10 justify-between w-48 h-14 px-5 py-3 text-white transition-colors border border-current rounded-lg hover:bg-black group active:bg-black focus:outline-none focus:ring"
             href=""
           >
@@ -123,6 +127,6 @@ const CreateDesign = async () => {
       </div>{" "}
     </div>
   );
-}
+};
 
 export default CreateDesigns;

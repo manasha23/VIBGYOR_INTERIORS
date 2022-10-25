@@ -1,60 +1,56 @@
-import { useState } from "react";
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UserAuth } from '../Context/AuthContext';
 
-const Login = () => {
+const Signin = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+  const { signIn } = UserAuth();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('')
+    try {
+      await signIn(email, password)
+      navigate('/')
+    } catch (e) {
+      setError(e.message)
+      console.log(e.message)
+    }
+  };
+
   return (
-    <div className="dark:bg-gray-800 h-screen py-6 sm:py-8 lg:py-12">
+    <div className="bg-gray-800 h-screen py-6 sm:py-8 lg:py-12">
       <div className="max-w-screen-2xl  px-4 md:px-8 mx-auto">
-        <h2 className="text-white  text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8">
-       Login Now
-        </h2>
-        <form className="max-w-lg  bg-gradient-to-r from-orange-400 via-rose-400 to-purple-900 border rounded-lg mx-auto">
-          <div className="flex flex-col gap-4 p-4 md:p-8">
-            <div>
-              <label
-                htmlFor="email"
-                className="inline-block mt-5 text-gray-800 text-sm sm:text-base mb-2"
-              >
-                Username
-              </label>
-              <input
-                name="uname"
-                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="inline-block text-gray-800 text-sm sm:text-base mb-2"
-              >
-                Password
-              </label>
-              <input
-                name="password"
-                className="w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
-              />
-            </div>
-            <a
-              rel="noopener noreferrer"
-              href="/Decors"
-              className="px-8 py-3 ml-36 text-center text-white w-40 text-lg font-semibold border rounded hover:dark:text-black  dark:border-gray-100"
-            >
-              Login
-            </a>{" "}
-            <div class="flex rounded justify-center items-center bg-black p-4">
-              <p class="text-gray-500  text-sm text-center">
-                Don't have an account?{" "}
-                <a
-                  href="/sign-up"
-                  class="text-indigo-500 hover:text-indigo-600 active:text-indigo-700 transition duration-100"
-                >
-                  Register Now!
-                </a>
-              </p>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+      <h2 className="text-white  text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-8">Sign in</h2>
+        <p className="text-white  text-2xl lg:text-1xl font-bold text-center mb-4 md:mb-8">
+          Don't have an account yet?{' '}
+          <Link to='/sign-up' className='underline'>
+            Sign up.
+          </Link>
+        </p>
+      
+      <form onSubmit={handleSubmit} className="max-w-lg  border rounded-lg mx-auto">
+        <div className='form-group flex flex-col gap-4 p-4 md:p-8'>
+        <div>
+          <label className='inline-block mt-5 text-white text-sm sm:text-base mb-2'>Email Address:</label>
+          <input onChange={(e) => setEmail(e.target.value)} className='Input w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2' type='email'/>
+        </div>
+        <div className='form-group'>
+          <label className='inline-block text-white text-sm sm:text-base mb-2'>Password:</label>
+          <input onChange={(e) => setPassword(e.target.value)} className='Input w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2' type='password' />
+        </div>
+        <button className='px-8 py-3 ml-36 text-center text-white w-40 text-lg font-semibold border rounded hover:dark:text-black  dark:border-gray-100 mb-4'>
+          Sign In
+        </button>
+        </div>
+      </form>
+   </div>
+   </div>
+ 
   );
 };
-export default Login;
+
+export default Signin;

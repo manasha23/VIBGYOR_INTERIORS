@@ -11,6 +11,7 @@ import {
   doc,
 } from "firebase/firestore";
 
+
 const AllProduct = () => {
 
   const [products, setproducts] = useState([]);
@@ -19,6 +20,7 @@ const AllProduct = () => {
     const productDoc = doc(db, "Products", id);
     await deleteDoc(productDoc);
   };
+  const [cart, setCart] = useState([])
 
 
   useEffect(() => {
@@ -30,13 +32,14 @@ const AllProduct = () => {
   }, []);
 
   return (
-    <div className=" my-auto  bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900 py-6 sm:py-8 lg:py-12">
+    <div className="h-auto  bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900 py-6 sm:py-8 lg:py-12">
       <div className="max-w-screen-lg px-4 md:px-8 mx-auto">
         <div className="mb-6 sm:mb-10 lg:mb-16">
           <h2 className="text-white text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
             Products Stocks
           </h2>
         </div>{" "}
+ 
         {/* <div className="flex -mt-5 mb-5  flex-col items-center gap-4 ">
           <div className="w-full sm:max-w-xs bg-gray-900 rounded-lg p-4">
             <div className="space-y-1">
@@ -125,16 +128,7 @@ const AllProduct = () => {
                 </div>
                 <div className="w-full sm:w-auto flex justify-between border-t mt-1 mr-5 sm:border-none p-4 sm:pl-0 lg:p-6 lg:pl-0">
                   <div className="flex flex-col items-start gap-2">
-                    <a
-                      class="relative inline-block px-8 py-3 w-28 overflow-hidden border  rounded-sm border-black group focus:outline-none focus:ring"
-                      href="/admin/products/edit/:productId"
-                    >
-                      <span class="absolute inset-y-0 left-0 w-[2px]  transition-all bg-black group-hover:w-full group-active:bg-black"></span>
-
-                      <span class="relative text-sm font-medium  text-white transition-colors group-hover:text-white">
-                        Modify
-                      </span>
-                    </a>
+               
                     <button
                       onClick={() => {
                         deleteUser(product.id);

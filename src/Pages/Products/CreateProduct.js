@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { UserAuth } from "../../Context/AuthContext";
 import { db } from "../../firebase-config";
 import { collection, getDocs, addDoc } from "firebase/firestore";
-import { storage } from "../../firebase-config";
-import { listAll, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { v4 } from "uuid";
-import { toHaveStyle } from "@testing-library/jest-dom/dist/matchers";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const CreateProducts = () => {
+  let navigate = useNavigate();
   const [newName, setNewName] = useState("");
   const [newDescription, setDescription] = useState("");
-  const [newPrice, setPrice] = useState(0);
+  const [newPrice, setPrice] = useState("");
   const [imageUpload, setImageUpload] = useState("");
   const [id, setId] = useState("");
   const [products, setproducts] = useState([]);
@@ -18,11 +19,25 @@ const CreateProducts = () => {
     e.preventDefault();
   };
 
+  const { user, logout } = UserAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/Adminsignup");
+      console.log("You are logged out");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+  
   const createProduct = async () => {
     alert("Product added successfully ");
+    navigate("/admin/products", { replace: true });
     await addDoc(userCollectionRef, {
       Name: newName,
       Description: newDescription,
+      Category: category,
       Price: Number(newPrice),
       Image: imageUpload,
       Id: id,
@@ -31,16 +46,8 @@ const CreateProducts = () => {
 
   return (
     <section className="text-white grid grid-cols-2  h-screen dark:bg-gray-800   ">
-      <div className="flex flex-col items-center w-56 h-full overflow-hiddenbg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900  ">
+      <div className="flex flex-col items-center w-56 h-full overflow-hidden bg-gradient-to-r from-slate-900 bg-gradient-to-tl from-red-600 to-blue-400 to-blue-900  ">
         <a className="flex items-center w-full px-3 mt-3" href="#">
-          <svg
-            className="w-8 h-8 fill-current"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z" />
-          </svg>
           <span className="ml-3 text-3xl font-bold">Admins</span>
         </a>
         <div className="w-full px-2">
@@ -49,7 +56,7 @@ const CreateProducts = () => {
               className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
               href="/admin/designs/create"
             >
-              <span  className="ml-2 text-sm font-medium">Create-Designs</span>
+              <span className="ml-2 text-sm font-medium">Create-Designs</span>
             </a>
             <a
               className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
@@ -57,12 +64,7 @@ const CreateProducts = () => {
             >
               <span className="ml-2 text-sm font-medium">Design-Stocks</span>
             </a>
-            <a
-              className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-              href="/admin/designs/edit/:designId"
-            >
-              <span className="ml-2 text-sm font-medium">Modify-Designs</span>
-            </a>
+          
             <a
               className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
               href="/admin/designs/view/:designId"
@@ -85,13 +87,7 @@ const CreateProducts = () => {
             >
               <span className="ml-2 text-sm font-medium">Product-Stocks</span>
             </a>
-            <a
-              className="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
-              href="/admin/products/edit/:productId"
-            >
-              <span className="ml-2 text-sm font-medium">Modify-Products</span>
-              <span className="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full" />
-            </a>{" "}
+     
             <a
               className="relative flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-indigo-700"
               href="/admin/product/view/:productId"
@@ -101,6 +97,11 @@ const CreateProducts = () => {
               </span>
               <span className="absolute top-0 left-0 w-2 h-2 mt-2 ml-2 bg-indigo-500 rounded-full" />
             </a>
+            <div className="max-w-[600px] mx-auto ml-5 -mt-5">
+              <button onClick={handleLogout} className="border px-6 py-2 my-4">
+                Logout
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -129,7 +130,7 @@ const CreateProducts = () => {
             </div>{" "}
             <div>
               <label for="password" class="text-sm font-medium">
-              Product ID
+                Product ID
               </label>
 
               <div class="relative mt-1">
@@ -217,7 +218,7 @@ const CreateProducts = () => {
             href=""
           >
             <span class="font-medium transition-colors group-hover:text-white">
-              Create Products
+           Add Products
             </span>
 
             <span class="flex-shrink-0 p-2 ml-4  text-black bg-white border border-black rounded-full group-active:border-black">
@@ -239,7 +240,8 @@ const CreateProducts = () => {
             </span>
           </button>
         </form>
-      </div>
+      </div>{" "}
+      <ToastContainer />
     </section>
   );
 };
