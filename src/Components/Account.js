@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserAuth } from '../Context/AuthContext';
 
 const Account = () => {
-  const { user, logout } = UserAuth();
+  const { user, logout } = UserAuth();//passed from UserAuth
   const navigate = useNavigate();
 
   const handleLogout = async () => {

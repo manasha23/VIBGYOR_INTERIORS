@@ -17,7 +17,7 @@ const Signup = () => {
     e.preventDefault();
     setError("");
     try {
-      await createUser(email, password);
+      await createUser(email, password);//createUser function....userAuth importing from context
       navigate("/");
     } catch (e) {
       setError(e.message);
@@ -50,7 +50,7 @@ const Signup = () => {
           <div>
           <label className="inline-block mt-5 text-white text-sm sm:text-base mb-2">Email Address:</label>
           <input
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}//This event is triggered whenever the user types something into the input field, It takes the event object e as a parameter and updates the email state using the setEmail function.
             className="Input w-full bg-gray-50 text-gray-800 border focus:ring ring-indigo-300 rounded outline-none transition duration-100 px-3 py-2"
             type="email"
           />

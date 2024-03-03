@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import React, { Components } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";//It is used to wrap the entire application into browser router, wrap app component
 
 import Home from "./Pages/Home";
 import AllDesign from "./Pages/Designs/AllDesign";
